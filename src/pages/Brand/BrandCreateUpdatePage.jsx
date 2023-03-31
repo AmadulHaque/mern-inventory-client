@@ -1,19 +1,17 @@
-import React, { Fragment,Suspense } from 'react';
+import React, { Fragment ,Suspense} from 'react';
 import MasterLayout from '../../components/MasterLayout/MasterLayout';
 import LazyLoader from "../../components/MasterLayout/LazyLoader";
-import ProductList from "../../components/Product/ProductList";
-
-
-const ProductListPage = () => {
+import BrandCreateUpdate from "../../components/Brand/BrandCreateUpdate";
+const BrandCreateUpdatePage = () => {
     return (
         <Fragment>
             <MasterLayout>
                 <Suspense fallback={<LazyLoader/>}>
-                    <ProductList/>
+                    <BrandCreateUpdate/>
                 </Suspense>
             </MasterLayout>
         </Fragment>
     );
 };
 
-export default ProductListPage;
+export default BrandCreateUpdatePage;

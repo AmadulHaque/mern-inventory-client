@@ -1,11 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment ,Suspense} from 'react';
 import MasterLayout from '../../components/MasterLayout/MasterLayout';
+import LazyLoader from "../../components/MasterLayout/LazyLoader";
+import CategoryList from "../../components/Category/CategoryList";
 
 const CategoryListPage = () => {
     return (
         <Fragment>
             <MasterLayout>
-                <h2>Category List</h2>
+                <Suspense fallback={<LazyLoader/>}>
+                    <CategoryList/>
+                </Suspense>
             </MasterLayout>
         </Fragment>
     );

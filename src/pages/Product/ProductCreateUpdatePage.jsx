@@ -1,11 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,Suspense } from 'react';
 import MasterLayout from '../../components/MasterLayout/MasterLayout';
-
+import LazyLoader from "../../components/MasterLayout/LazyLoader";
+import ProductCreateUpdate from "../../components/Product/ProductCreateUpdate";
 const ProductCreateUpdatePage = () => {
     return (
         <Fragment>
             <MasterLayout>
-            <h2>Product Create</h2>
+                <Suspense fallback={<LazyLoader/>}>
+                    <ProductCreateUpdate/>
+                </Suspense>
             </MasterLayout>
         </Fragment>
     );

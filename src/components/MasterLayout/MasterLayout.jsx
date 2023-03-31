@@ -86,6 +86,25 @@ const MasterLayout = (props) => {
         },
       ],
     },
+    {
+      title: 'Brand',
+      icon: <FaQuoteRight  className="side-bar-item-icon" />,
+      url: '/brand',
+      subMenu: [
+        {
+          title: 'New Brand',
+          icon: <FaPlusCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/brand/add',
+        },
+        {
+          title: 'Brand List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/brand/list',
+        },
+      ],
+    },
   ];
 
 

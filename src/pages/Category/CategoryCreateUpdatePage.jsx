@@ -1,11 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment ,Suspense} from 'react';
 import MasterLayout from '../../components/MasterLayout/MasterLayout';
-
+import LazyLoader from "../../components/MasterLayout/LazyLoader";
+import CategoryCreateUpdate from "../../components/Category/CategoryCreateUpdate";
 const CategoryCreateUpdatePage = () => {
     return (
         <Fragment>
             <MasterLayout>
-            <h2>Category Create</h2>
+                <Suspense fallback={<LazyLoader/>}>
+                    <CategoryCreateUpdate/>
+                </Suspense>
             </MasterLayout>
         </Fragment>
     );
