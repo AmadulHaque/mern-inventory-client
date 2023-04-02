@@ -45,3 +45,7 @@ td div {
   word-break: break-all;
   display: block;
 }
+
+a {
+	text-decoration: none;
+}
