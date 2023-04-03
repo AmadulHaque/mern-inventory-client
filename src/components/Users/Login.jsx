@@ -1,6 +1,34 @@
-import {React,Fragment} from 'react';
-import {Link} from "react-router-dom";
+import {React,Fragment,useRef} from 'react';
+import {Link,useNavigate } from "react-router-dom";
+import {ErrorToast, IsEmail, IsEmpty} from "../../helper/FormHelper";
+import {LoginRequest} from "../../APIRequest/UsersAPIRequest";
+
 const Login = () => {
+    const navigate = useNavigate();
+    let passRef,emailRef=useRef();
+
+    const SubmitLogin=async () => {
+
+        // debugger;
+        let email = emailRef.value;
+        let pass = passRef.value;
+        // debugger;
+        if (IsEmail(email)) {
+            ErrorToast("Invalid Email Address")
+        } else if (IsEmpty(pass)) {
+            ErrorToast("Password Required")
+        } else {
+          let result= await LoginRequest(email, pass)
+           if(result) {
+               window.location.href="/"
+            // navigate("/");
+           }else{
+            // ErrorToast("Invalid Email Address")
+
+           }
+        }
+    }
+
     return (
         <Fragment>
             <div className="container">
@@ -10,11 +38,11 @@ const Login = () => {
                             <div className="card-body">
                                 <h3>SIGN IN</h3>
                                 <br/>
-                                <input placeholder="User Email" className="form-control" type="email"/>
+                                <input ref={(input)=>emailRef=input}  placeholder="User Email" className="form-control" type="email"/>
                                 <br/>
-                                <input placeholder="User Password" className="form-control" type="password"/>
+                                <input ref={(input)=>passRef=input}  placeholder="User Password" className="form-control" type="password"/>
                                 <br/>
-                                <button className="btn btn-success w-100 animated ">Next</button>
+                                <button onClick={SubmitLogin} className="btn btn-success w-100 animated ">Next</button>
                                 <div className="float-end mt-3">
                                     <span>
                                         <Link className="text-center ms-3 h6" to="/Registration">Sign Up</Link>
