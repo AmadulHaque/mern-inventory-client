@@ -21,7 +21,7 @@ const Login = () => {
           let result= await LoginRequest(email, pass)
            if(result) {
                window.location.href="/"
-            // navigate("/");
+            // navigate("/dashboard");
            }else{
             // ErrorToast("Invalid Email Address")
 

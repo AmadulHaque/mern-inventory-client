@@ -1,5 +1,5 @@
 import React,{Fragment,useState} from 'react';
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import { Navigate, Route, Routes} from "react-router-dom";
 import {getToken} from "./helper/SessionHelper";
 import CategoryCreateUpdatePage from './pages/Category/CategoryCreateUpdatePage';
 import CategoryListPage from './pages/Category/CategoryListPage';
@@ -22,29 +22,29 @@ function App() {
   
   if(getToken()){
   return (
-    <Fragment>
-        <BrowserRouter>
-            <Routes>
-                <Route exact path="/product/list" element={<ProductListPage/>}/>
-                <Route exact path="/product/add" element={<ProductCreateUpdatePage/>}/>
-                <Route exact path="/category/list" element={<CategoryListPage/>}/>
-                <Route exact path="/category/add" element={<CategoryCreateUpdatePage/>}/>
-                <Route exact path="/brand/list" element={<BrandListPage/>}/>
-                <Route exact path="/brand/add" element={<BrandCreateUpdatePage/>}/>
-                <Route exact path="/" element={<DashboardPage/>}/>
-                <Route exact path="/Profile" element={<ProfilePage/>}/>
-                <Route path="*" element={<Page404/>}/>
-                <Route path="/Login" element={<Navigate to="/" replace />}/>
-                <Route path="/Registration" element={<Navigate to="/" replace />}/>
+    <>
+      <Routes>
+          <Route exact path="/product/list" element={<ProductListPage/>}/>
+          <Route exact path="/product/add" element={<ProductCreateUpdatePage/>}/>
+          <Route exact path="/category/list" element={<CategoryListPage/>}/>
+          <Route exact path="/category/add" element={<CategoryCreateUpdatePage/>}/>
+          <Route exact path="/brand/list" element={<BrandListPage/>}/>
+          <Route exact path="/brand/add" element={<BrandCreateUpdatePage/>}/>
+          <Route exact path="/" element={<DashboardPage/>}/>
+          <Route exact path="/Profile" element={<ProfilePage/>}/>
+          <Route path="*" element={<Page404/>}/>
+          <Route path="/Login" element={<Navigate to="/" replace />}/>
+          <Route path="/Registration" element={<Navigate to="/" replace />}/>
 
-            </Routes>
-        </BrowserRouter>
-    </Fragment>
+          
+          
+      </Routes>
+    </>
   );
   }else{
     return (
       <Fragment>
-          <BrowserRouter>
+
               <Routes>
                 <Route path="/" element={<Navigate to="/Login" replace />}/>
                   <Route exact path="/Login" element={<LoginPage/>}/>
@@ -54,7 +54,6 @@ function App() {
                   <Route exact path="/CreatePassword" element={<CreatePasswordPage/>}/>
                   <Route path="*" element={<Page404/>}/>
               </Routes>
-          </BrowserRouter>
       </Fragment>
     );
   }

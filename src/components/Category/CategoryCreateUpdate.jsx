@@ -1,6 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import store from "../../redux/store/store";
+import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {ErrorToast, IsEmpty} from "../../helper/FormHelper";
+import {CreateCategoryRequest, FillCategoryFormRequest} from "../../APIRequest/CategoryAPIRequest";
+import {OnChangeCategoryInput} from "../../redux/state-slice/category-slice";
 
 const CategoryCreateUpdate = () => {
+
+
+    let FormValue=useSelector((state)=>(state.category.FormValue));
+    let navigate=useNavigate();
+    let [ObjectID,SetObjectID]=useState(0);
+
+    useEffect(()=>{
+        let params= new URLSearchParams(window.location.search);
+        let id=params.get('id');
+        if(id!==null){
+            SetObjectID(id);
+            (async () => {
+                await FillCategoryFormRequest(id);
+            })();
+        }
+    },[])
+
+
+    const SaveChange = async () => {
+        if(IsEmpty(FormValue.Name)){
+            ErrorToast("Category Name Required !")
+        }
+        else {
+            if(await CreateCategoryRequest(FormValue,ObjectID)){
+                navigate("/category/list")
+            }
+        }
+    }
+
+
+
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -12,12 +50,12 @@ const CategoryCreateUpdate = () => {
                                 <hr className="bg-light"/>
                                 <div className="col-4 p-2">
                                     <label className="form-label">Category Name</label>
-                                    <input  className="form-control form-control-sm" type="text"/>
+                                    <input onChange={(e)=>{store.dispatch(OnChangeCategoryInput({Name:"Name",Value:e.target.value}))}} value={FormValue.Name} className="form-control form-control-sm" type="text"/>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-4 p-2">
-                                    <button  className="btn btn-sm my-3 btn-success">Save Change</button>
+                                    <button onClick={SaveChange} className="btn btn-sm my-3 btn-success">Save Change</button>
                                 </div>
                             </div>
                         </div>
