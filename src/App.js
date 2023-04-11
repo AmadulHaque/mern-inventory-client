@@ -17,6 +17,7 @@ import RegistrationPage from "./pages/Users/RegistrationPage";
 import SendOTPPage from "./pages/Users/SendOTPPage";
 import VerifyOTPPage from "./pages/Users/VerifyOTPPage";
 import CreatePasswordPage from "./pages/Users/CreatePasswordPage";
+import FullscreenLoader from "./components/MasterLayout/FullscreenLoader";
 
 function App() {
   
@@ -35,10 +36,8 @@ function App() {
           <Route path="*" element={<Page404/>}/>
           <Route path="/Login" element={<Navigate to="/" replace />}/>
           <Route path="/Registration" element={<Navigate to="/" replace />}/>
-
-          
-          
       </Routes>
+        <FullscreenLoader/>
     </>
   );
   }else{
