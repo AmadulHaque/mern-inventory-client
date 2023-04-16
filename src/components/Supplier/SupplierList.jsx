@@ -1,48 +1,43 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {DeleteProductRequest, ProductListRequest} from "../../APIRequest/ProductAPIRequest";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {FaTrashAlt, FaEdit} from "react-icons/fa";
-import {DeleteAlert} from "../../helper/DeleteAlert";
 import ReactPaginate from "react-paginate";
+import {DeleteSupplierRequest, SupplierListRequest} from "../../APIRequest/SupplierAPIRequest";
+import {DeleteAlert} from "../../helper/DeleteAlert";
 
-const ProductList = () => {
+const SupplierList = () => {
 
     let [searchKeyword,setSearchKeyword]=useState("0");
     let [perPage,setPerPage]=useState(20);
 
     useEffect(()=>{
         (async () => {
-            await ProductListRequest(1,perPage,searchKeyword);
+            await SupplierListRequest(1,perPage,searchKeyword);
         })();
     },[])
 
-    let DataList=useSelector((state)=>(state.product.List));
-    let Total=useSelector((state)=>(state.product.ListTotal))
-
-
+    let DataList=useSelector((state)=>(state.supplier.List));
+    let Total=useSelector((state)=>(state.supplier.ListTotal))
 
     const handlePageClick = async (event) => {
-        await ProductListRequest(event.selected + 1, perPage, searchKeyword)
+        await SupplierListRequest(event.selected + 1, perPage, searchKeyword)
     };
 
-
     const searchData=async () => {
-        await ProductListRequest(1, perPage, searchKeyword)
+        await SupplierListRequest(1, perPage, searchKeyword)
     }
-
 
     const perPageOnChange=async (e) => {
         setPerPage(parseInt(e.target.value))
-        await ProductListRequest(1, e.target.value, searchKeyword)
+        await SupplierListRequest(1, e.target.value, searchKeyword)
     }
-
 
     const searchKeywordOnChange=async (e) => {
         setSearchKeyword(e.target.value)
         if ((e.target.value).length === 0) {
             setSearchKeyword("0")
-            await ProductListRequest(1, perPage, "0")
+            await SupplierListRequest(1, perPage, "0")
         }
     }
 
@@ -53,17 +48,16 @@ const ProductList = () => {
         })
     }
 
+
     const DeleteItem = async (id) => {
         let Result = await DeleteAlert();
         if(Result.isConfirmed){
-            let DeleteResult= await DeleteProductRequest(id)
+            let DeleteResult= await DeleteSupplierRequest(id)
             if(DeleteResult){
-                await ProductListRequest(1,perPage,searchKeyword);
+                await SupplierListRequest(1,perPage,searchKeyword);
             }
         }
     }
-
-
 
     return (
         <Fragment>
@@ -75,7 +69,7 @@ const ProductList = () => {
                                 <div className="container-fluid">
                                     <div className="row">
                                         <div className="col-4">
-                                            <h5> Product List</h5>
+                                            <h5> Supplier List</h5>
                                         </div>
 
                                         <div className="col-2">
@@ -104,25 +98,23 @@ const ProductList = () => {
                                                 <table className="table ">
                                                     <thead className="sticky-top bg-white">
                                                     <tr>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#No</td>
                                                         <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</td>
-                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unit</td>
-                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand</td>
-                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Categories</td>
-                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</td>
                                                         <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</td>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     {
-                                                        DataList.map((item)=>
+                                                        DataList.map((item,i)=>
                                                             <tr>
+                                                                <td><p className="text-xs text-start">{i+1}</p></td>
                                                                 <td><p className="text-xs text-start">{item.Name}</p></td>
-                                                                <td><p className="text-xs text-start">{item.Unit}</p></td>
-                                                                <td><p className="text-xs text-start">{item.brands[0]?item.brands[0]['Name']:""}</p></td>
-                                                                <td><p className="text-xs text-start">{item.categories[0]?item.categories[0]['Name']:""}</p></td>
-                                                                <td><p className="text-xs text-start">{item.Details}</p></td>
+                                                                <td><p className="text-xs text-start">{item.Phone}</p></td>
+                                                                <td><p className="text-xs text-start">{item.Email}</p></td>
                                                                 <td>
-                                                                    <Link to={`/product/add?id=${item._id}`} className="btn text-info btn-outline-light p-2 mb-0 btn-sm">
+                                                                    <Link to={`/SupplierCreateUpdatePage?id=${item._id}`} className="btn text-info btn-outline-light p-2 mb-0 btn-sm">
                                                                         <FaEdit size={15} />
                                                                     </Link>
                                                                     <button onClick={DeleteItem.bind(this,item._id)} className="btn btn-outline-light text-danger p-2 mb-0 btn-sm ms-2">
@@ -172,4 +164,4 @@ const ProductList = () => {
     );
 };
 
-export default ProductList;
+export default SupplierList;

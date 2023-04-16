@@ -2,7 +2,7 @@ import React, { Fragment, useRef ,useEffect} from 'react';
 import { Accordion, Container, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-import { FaHome,FaTasks,FaPlusCircle,FaProductHunt,FaQuoteRight } from "react-icons/fa";
+import { FaHome,FaTasks,FaPlusCircle,FaProductHunt,FaQuoteRight,FaUserAlt,FaTruck,FaStore} from "react-icons/fa";
 import {AiOutlineLogout, AiOutlineMenu, AiOutlineUser} from 'react-icons/ai';
 import {removeSessions,getUserDetails} from "../../helper/SessionHelper";
 const MasterLayout = (props) => {
@@ -51,6 +51,75 @@ const MasterLayout = (props) => {
       icon: <FaHome className="side-bar-item-icon" />,
       url: '/',
       subMenu: [],
+    },
+    {
+      title: 'Customer',
+      icon: <FaUserAlt  className="side-bar-item-icon" />,
+      url: '/Customer',
+      subMenu: [
+        {
+          title: 'New Customer',
+          icon: <FaPlusCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/CustomerCreateUpdatePage',
+        },
+        {
+          title: 'Customer List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/CustomerListPage',
+        },
+      ],
+    },
+    {
+      title: 'Supplier',
+      icon: <FaTruck className="side-bar-item-icon" />,
+      url: '/Supplier',
+      subMenu: [
+        {
+          title: 'New Supplier',
+          icon: <FaPlusCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/SupplierCreateUpdatePage',
+        },
+        {
+          title: 'Supplier List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/SupplierListPage',
+        },
+      ],
+    },
+    {
+      title: 'Expense',
+      icon: <FaStore  className="side-bar-item-icon" />,
+      url: '/Expense',
+      subMenu: [
+        {
+          title: 'New Expense Type',
+          icon: <FaPlusCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/ExpenseTypeCreateUpdatePage',
+        },
+        {
+          title: 'Expense Type List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/ExpenseTypeListPage',
+        },
+        {
+          title: 'New Expense',
+          icon: <FaPlusCircle  size={16} className="side-bar-subitem-icon" />,
+          url: '/ExpenseCreateUpdatePage',
+        },
+        {
+          title: 'Expense List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/ExpenseListPage',
+        },
+      ],
     },
     {
       title: 'Product',
@@ -106,6 +175,44 @@ const MasterLayout = (props) => {
               <FaTasks size={16} className="side-bar-subitem-icon" />
           ),
           url: '/brand/list',
+        },
+      ],
+    },
+    {
+      title: 'Sale',
+      icon: <FaQuoteRight className="side-bar-item-icon" />,
+      url: '/Sale',
+      subMenu: [
+        {
+          title: 'New Sale',
+          icon: <FaPlusCircle  size={16} className="side-bar-subitem-icon" />,
+          url: '/SalesCreateUpdatePage',
+        },
+        {
+          title: 'Sale List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/SalesListPage',
+        },
+      ],
+    },
+    {
+      title: 'Purchase',
+      icon: <FaQuoteRight className="side-bar-item-icon" />,
+      url: '/Purchase',
+      subMenu: [
+        {
+          title: 'New Purchase',
+          icon: <FaPlusCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/PurchaseCreateUpdatePage',
+        },
+        {
+          title: 'Purchase List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/PurchaseListPage',
         },
       ],
     },
@@ -211,16 +318,7 @@ const MasterLayout = (props) => {
             })}
           </Accordion>
 
-
-
-
-
-
         </div>
-
-
-
-
         <div ref={(div) => (contentRef = div)} className="content">
           {props.children}
         </div>
