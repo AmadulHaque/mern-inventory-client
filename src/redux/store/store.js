@@ -10,10 +10,13 @@ import expensetypeReducer from "../state-slice/expensetype-slice";
 import productReducer from "../state-slice/product-slice";
 import saleReducer from "../state-slice/sale-slice";
 import purchaseReducer from "../state-slice/purchase-slice";
+import returnReducer from "../state-slice/return-slice"
+import dashboardReducer from "../state-slice/dashboard-slice";
 
 export default configureStore({
     reducer:{
         settings:settingsReducer,
+        dashboard:dashboardReducer,
         profile:profileReducer,
         category:categoryReducer,
         brand:brandReducer,
@@ -24,5 +27,6 @@ export default configureStore({
         product:productReducer,
         sale:saleReducer,
         purchase:purchaseReducer,
+        return:returnReducer,
     }
 })

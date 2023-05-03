@@ -179,6 +179,25 @@ const MasterLayout = (props) => {
       ],
     },
     {
+      title: 'Purchase',
+      icon: <FaQuoteRight className="side-bar-item-icon" />,
+      url: '/Purchase',
+      subMenu: [
+        {
+          title: 'New Purchase',
+          icon: <FaPlusCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/PurchaseCreateUpdatePage',
+        },
+        {
+          title: 'Purchase List',
+          icon: (
+              <FaTasks size={16} className="side-bar-subitem-icon" />
+          ),
+          url: '/PurchaseListPage',
+        },
+      ],
+    },
+    {
       title: 'Sale',
       icon: <FaQuoteRight className="side-bar-item-icon" />,
       url: '/Sale',
@@ -198,21 +217,21 @@ const MasterLayout = (props) => {
       ],
     },
     {
-      title: 'Purchase',
+      title: 'Return',
       icon: <FaQuoteRight className="side-bar-item-icon" />,
-      url: '/Purchase',
+      url: '/Sale',
       subMenu: [
         {
-          title: 'New Purchase',
-          icon: <FaPlusCircle size={16} className="side-bar-subitem-icon" />,
-          url: '/PurchaseCreateUpdatePage',
+          title: 'New Return',
+          icon: <FaPlusCircle  size={16} className="side-bar-subitem-icon" />,
+          url: '/ReturnCreateUpdatePage',
         },
         {
-          title: 'Purchase List',
+          title: 'Return List',
           icon: (
               <FaTasks size={16} className="side-bar-subitem-icon" />
           ),
-          url: '/PurchaseListPage',
+          url: '/ReturnListPage',
         },
       ],
     },
