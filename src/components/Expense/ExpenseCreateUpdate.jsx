@@ -41,6 +41,9 @@ const ExpenseCreateUpdate = () => {
         else if(FormValue.Amount===0){
             ErrorToast("Expense Amount Required !")
         }
+        else if(IsEmpty(FormValue.Amount)){
+            ErrorToast("Expense Amount Required !")
+        }
         else {
             if(await CreateExpenseRequest(FormValue,ObjectID)){
                 navigate("/ExpenseListPage")

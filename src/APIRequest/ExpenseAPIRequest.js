@@ -68,10 +68,9 @@ export async function CreateExpenseRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
         let URL = BaseURL+"/CreateExpenses"
-        if(ObjectID!==0){
-            URL = BaseURL+"/UpdateExpenses/"+ObjectID;
+        if(ObjectID!==0) {
+            URL = BaseURL + "/UpdateExpenses/" + ObjectID;
         }
-        debugger;
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {

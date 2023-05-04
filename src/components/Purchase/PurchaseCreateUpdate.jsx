@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useRef} from 'react';
 import {useSelector} from "react-redux";
 import {FaTrashAlt,FaCartArrowDown} from "react-icons/fa";
-import {ErrorToast, IsEmpty} from "../../helper/FormHelper";
+import {ErrorToast, IsEmpty, SuccessToast} from "../../helper/FormHelper";
 import store from "../../redux/store/store";
 import {OnChangePurchaseInput, RemovePurchaseItem, SetPurchaseItemList} from "../../redux/state-slice/purchase-slice";
 import {CreatePurchaseRequest, ProductDropDownRequest, SupplierDropDownRequest} from "../../APIRequest/PurchaseAPIRequest";
@@ -61,7 +61,11 @@ const PurchaseCreateUpdate = () => {
     const CreateNewPurchase=async () => {
         // Apply Validation
         let res= await CreatePurchaseRequest(PurchaseFormValue, PurchaseItemList);
-        alert(res);
+        if (res==true){
+            SuccessToast("Add Success!")
+        }else{
+            // ErrorToast("Add fail!")
+        }
     }
 
 

@@ -2,8 +2,19 @@ import React, { Fragment, useRef ,useEffect} from 'react';
 import { Accordion, Container, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-import { FaHome,FaTasks,FaPlusCircle,FaProductHunt,FaQuoteRight,FaUserAlt,FaTruck,FaStore} from "react-icons/fa";
+import {
+  FaHome,
+  FaTasks,
+  FaPlusCircle,
+  FaProductHunt,
+  FaQuoteRight,
+  FaUserAlt,
+  FaTruck,
+  FaStore,
+  FaCartArrowDown, FaBriefcaseMedical, FaStackExchange, FaBox
+} from "react-icons/fa";
 import {AiOutlineLogout, AiOutlineMenu, AiOutlineUser} from 'react-icons/ai';
+import { FaRegDotCircle,FaChartLine,FaShoppingBag} from "react-icons/fa";
 import {removeSessions,getUserDetails} from "../../helper/SessionHelper";
 const MasterLayout = (props) => {
 
@@ -142,7 +153,7 @@ const MasterLayout = (props) => {
     },
     {
       title: 'Category',
-      icon: <FaQuoteRight  className="side-bar-item-icon" />,
+      icon: <FaBox  className="side-bar-item-icon" />,
       url: '/category',
       subMenu: [
         {
@@ -161,7 +172,7 @@ const MasterLayout = (props) => {
     },
     {
       title: 'Brand',
-      icon: <FaQuoteRight  className="side-bar-item-icon" />,
+      icon: <FaStackExchange  className="side-bar-item-icon" />,
       url: '/brand',
       subMenu: [
         {
@@ -180,7 +191,7 @@ const MasterLayout = (props) => {
     },
     {
       title: 'Purchase',
-      icon: <FaQuoteRight className="side-bar-item-icon" />,
+      icon: <FaBriefcaseMedical className="side-bar-item-icon" />,
       url: '/Purchase',
       subMenu: [
         {
@@ -199,7 +210,7 @@ const MasterLayout = (props) => {
     },
     {
       title: 'Sale',
-      icon: <FaQuoteRight className="side-bar-item-icon" />,
+      icon: <FaCartArrowDown className="side-bar-item-icon" />,
       url: '/Sale',
       subMenu: [
         {
@@ -218,7 +229,7 @@ const MasterLayout = (props) => {
     },
     {
       title: 'Return',
-      icon: <FaQuoteRight className="side-bar-item-icon" />,
+      icon: <FaShoppingBag className="side-bar-item-icon" />,
       url: '/Sale',
       subMenu: [
         {
@@ -232,6 +243,33 @@ const MasterLayout = (props) => {
               <FaTasks size={16} className="side-bar-subitem-icon" />
           ),
           url: '/ReturnListPage',
+        },
+      ],
+    },
+    {
+      title: 'Report',
+      icon: <FaChartLine className="side-bar-item-icon" />,
+      url: '/Report',
+      subMenu: [
+        {
+          title: 'Sale Report',
+          icon: <FaRegDotCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/SaleReportPage',
+        },
+        {
+          title: 'Return Report',
+          icon: <FaRegDotCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/ReturnReportPage',
+        },
+        {
+          title: 'Purchase Report',
+          icon: <FaRegDotCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/PurchaseReportPage',
+        },
+        {
+          title: 'Expense Report',
+          icon: <FaRegDotCircle size={16} className="side-bar-subitem-icon" />,
+          url: '/ExpenseReportPage',
         },
       ],
     },

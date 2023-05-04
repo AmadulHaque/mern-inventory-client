@@ -32,6 +32,10 @@ import PurchaseCreateUpdatePage from "./pages/Purchase/PurchaseCreateUpdatePage"
 import PurchaseListPage from "./pages/Purchase/PurchaseListPage";
 import ReturnCreateUpdatePage from "./pages/Return/ReturnCreateUpdatePage";
 import ReturnListPage from "./pages/Return/ReturnListPage";
+import PurchaseReportPage from "./pages/Report/PurchaseReportPage";
+import ReturnReportPage from "./pages/Report/ReturnReportPage";
+import SaleReportPage from "./pages/Report/SaleReportPage";
+import ExpenseReportPage from "./pages/Report/ExpenseReportPage";
 
 function App() {
   
@@ -58,6 +62,12 @@ function App() {
 
           <Route exact path="/ReturnCreateUpdatePage" element={<ReturnCreateUpdatePage />}/>}/>
           <Route exact path="/ReturnListPage" element={<ReturnListPage/>}/>}/>
+
+
+          <Route exact path="/PurchaseReportPage" element={<PurchaseReportPage />}/>}/>
+          <Route exact path="/ReturnReportPage" element={<ReturnReportPage />}/>}/>
+          <Route exact path="/SaleReportPage" element={<SaleReportPage />}/>}/>
+          <Route exact path="/ExpenseReportPage" element={<ExpenseReportPage />}/>}/>
 
           <Route exact path="/product/list" element={<ProductListPage/>}/>
           <Route exact path="/product/add" element={<ProductCreateUpdatePage/>}/>

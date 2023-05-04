@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 export const expensetypeSlice=createSlice({
-    name:'expensetype',
+    name:'expensetypea',
     initialState:{
         List:[],
         ListTotal:0,

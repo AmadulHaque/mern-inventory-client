@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useRef} from 'react';
 import {CreateSaleRequest, CustomerDropDownRequest, ProductDropDownRequest} from "../../APIRequest/SaleAPIRequest";
 import {useSelector} from "react-redux";
 import {FaTrashAlt,FaCartArrowDown} from "react-icons/fa";
-import {ErrorToast, IsEmpty} from "../../helper/FormHelper";
+import {ErrorToast, IsEmpty, SuccessToast} from "../../helper/FormHelper";
 import store from "../../redux/store/store";
 import {OnChangeSaleInput, RemoveSaleItem, SetSaleItemList} from "../../redux/state-slice/sale-slice";
 
@@ -55,7 +55,11 @@ const SalesCreateUpdate = () => {
     const CreateNewSale=async () => {
         // Apply Validation
         let res= await CreateSaleRequest(SaleFormValue, SaleItemList);
-        alert(res);
+        if (res==true){
+            SuccessToast("Add Success!")
+        }else{
+            // ErrorToast("Add fail!")
+        }
     }
 
     return (

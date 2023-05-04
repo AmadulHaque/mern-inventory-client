@@ -12,6 +12,7 @@ import saleReducer from "../state-slice/sale-slice";
 import purchaseReducer from "../state-slice/purchase-slice";
 import returnReducer from "../state-slice/return-slice"
 import dashboardReducer from "../state-slice/dashboard-slice";
+import reportReducer from "../state-slice/report-slice";
 
 export default configureStore({
     reducer:{
@@ -28,5 +29,6 @@ export default configureStore({
         sale:saleReducer,
         purchase:purchaseReducer,
         return:returnReducer,
+        report:reportReducer,
     }
 })
